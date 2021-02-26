@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Home page</title>
+</head>
+<body>
+<h1>Post offices</h1>
+<form method="post" action="/post/add">
+  <label>
+    <input type="text" name="name" placeholder="Post office name" required />
+  </label>
+  <label>
+    <input type="text" name="cityName" placeholder="Post office city name" required />
+  </label>
+  <button type="submit">Add</button>
+</form>
+<br>
+<hr>
+{{#posts}}
+  <h4>Post office name: {{name}}</h4>
+  <h4>Post office city: {{cityName}}</h4>
+  <form method="post" action="/post/{{id}}/delete">
+    <button type="submit" name="id" value="{{id}}">Remove</button>
+  </form>
+  <hr>
+  <h3>Departures list</h3>
+    <ul>
+      {{#departures}}
+        <li>
+          <form method="post" action="/departure/{{id}}/delete">
+            {{type}} {{date}}
+            <button type="submit" name="id" value="{{id}}">
+              Remove
+            </button>
+          </form>
+        </li>
+      {{/departures}}
+      {{^departures}}
+        <b>No departures added...</b>
+      {{/departures}}
+    </ul>
+  <hr>
+{{/posts}}
+{{^posts}}
+  <b>No post offices added...</b>
+  <hr>
+{{/posts}}
+<br>
+<h2>Add departure</h2>
+<form method="post" action="/departure/add">
+  <label>
+    <select name="postId" required>
+      <option disabled>Select post office</option>
+      {{#posts}}
+        <option value="{{id}}" selected>{{name}}</option>
+      {{/posts}}
+    </select>
+  </label>
+  <label>
+    <input type="text" name="type" placeholder="Departure type" required />
+  </label>
+  <label>
+    <input type="text" name="date" placeholder="Departure date" required />
+  </label>
+  <button type="submit">Add</button>
+</form>
+</body>
+</html>
