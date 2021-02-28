@@ -1,5 +1,6 @@
 package ru.mirea.pr17.services;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.mirea.pr17.exceptions.NotFoundException;
 import ru.mirea.pr17.models.Departure;
@@ -13,14 +14,10 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @Service
+@RequiredArgsConstructor
 public class DepartureService {
     private final DepartureRepository departureRepository;
     private final PostOfficeService postOfficeService;
-
-    public DepartureService(DepartureRepository departureRepository, PostOfficeService postOfficeService) {
-        this.departureRepository = departureRepository;
-        this.postOfficeService = postOfficeService;
-    }
 
     @Transactional
     public <T> T getAll(Function<List<Departure>, T> dtoConverter) {

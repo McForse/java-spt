@@ -1,5 +1,6 @@
 package ru.mirea.pr17.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -12,15 +13,11 @@ import javax.validation.Valid;
 import java.util.Map;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("post")
 public class PostOfficeController {
     private final PostOfficeService postOfficeService;
     private final DtoConverter dtoConverter;
-
-    public PostOfficeController(PostOfficeService postOfficeService, DtoConverter dtoConverter) {
-        this.postOfficeService = postOfficeService;
-        this.dtoConverter = dtoConverter;
-    }
 
     @GetMapping
     public String index(@RequestParam(required = false) String name,

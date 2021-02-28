@@ -1,5 +1,6 @@
 package ru.mirea.pr17.repositories;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import ru.mirea.pr17.models.PostOffice;
 
@@ -12,12 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class PostOfficeRepositoryFilterImpl implements PostOfficeRepositoryFilter {
     private final EntityManager em;
-
-    public PostOfficeRepositoryFilterImpl(EntityManager em) {
-        this.em = em;
-    }
 
     @Override
     public List<PostOffice> findPostOfficeByNameAndCityName(String name, String cityName) {
