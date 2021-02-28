@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <title>Departures</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="/">Post's info</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="me-auto"></div>
+      <ul class="navbar-nav d-flex">
+        <li class="nav-item">
+          <a class="nav-link" href="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/post">Post offices</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/departure">Departures</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container pt-5">
+  <div class="row mb-3">
+    <div class="col-auto me-auto">
+      <h2>Departures list</h2>
+    </div>
+    <div class="col-auto">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#departuresFilterModal">
+        Filter
+      </button>
+    </div>
+  </div>
+  {{#departures.0}}
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Type</th>
+        <th scope="col">Date</th>
+        <th scope="col">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      {{#departures}}
+          <th scope="row">{{id}}</th>
+          <td>{{type}}</td>
+          <td>{{date}}</td>
+          <td>
+            <form method="post" action="/departure/{{id}}/delete">
+              <button type="submit" class="btn btn-danger">Remove</button>
+            </form>
+          </td>
+        </tr>
+      {{/departures}}
+      </tbody>
+    </table>
+  {{/departures.0}}
+  {{^departures}}
+    <b>No departures found</b>
+  {{/departures}}
+</div>
+<div class="modal fade" id="departuresFilterModal" tabindex="-1" aria-labelledby="departuresFilterModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="departuresFilterModalLabel">Filter departures</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="get" action="/departure">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="typeInput" class="form-label">Departure type</label>
+            <input type="text" class="form-control" id="typeInput" name="type" placeholder="Letter">
+          </div>
+          <div class="mb-3">
+            <label for="dateInput" class="form-label">Departure date</label>
+            <input type="date" class="form-control" id="dateInput" name="date" placeholder="dd.mm.yyyy">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Find</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
+        integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
+        crossorigin="anonymous"></script>
+</body>
+</html>
