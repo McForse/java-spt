@@ -91,7 +91,7 @@
     <div class="mb-3">
       <label for="postIdInput" class="form-label">Post office</label>
       <select class="form-select" id="postIdInput" name="postId" required>
-        <option selected>Select post office</option>
+        <option selected disabled>Select post office</option>
         {{#posts}}
           <option value="{{id}}" selected>{{name}}</option>
         {{/posts}}
