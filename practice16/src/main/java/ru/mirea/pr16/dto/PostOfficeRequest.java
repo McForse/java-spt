@@ -2,10 +2,12 @@ package ru.mirea.pr16.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.ToString;
 
 import javax.validation.constraints.NotBlank;
 
 @Getter
+@ToString
 @AllArgsConstructor
 public class PostOfficeRequest {
     @NotBlank

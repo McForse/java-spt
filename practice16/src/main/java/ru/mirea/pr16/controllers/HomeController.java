@@ -1,5 +1,6 @@
 package ru.mirea.pr16.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,15 +12,11 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/home")
+@RequiredArgsConstructor
+@RequestMapping("home")
 public class HomeController {
     private final PostOfficeService postOfficeService;
     private final DtoConverter dtoConverter;
-
-    public HomeController(PostOfficeService postOfficeService, DtoConverter dtoConverter) {
-        this.postOfficeService = postOfficeService;
-        this.dtoConverter = dtoConverter;
-    }
 
     @GetMapping
     public String index(Map<String, Object> model) {

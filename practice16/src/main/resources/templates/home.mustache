@@ -9,19 +9,16 @@
 </head>
 <body>
 <div class="container pt-5">
-  <h1>Post offices</h1>
-  <form method="post" action="/post/add">
-    <div class="mb-3">
-      <label for="nameInput" class="form-label">Post office name</label>
-      <input type="text" class="form-control" id="nameInput" name="name" placeholder="Russian Post" required>
+  <div class="row mb-3">
+    <div class="col-auto me-auto">
+      <h2>Post offices</h2>
     </div>
-    <div class="mb-3">
-      <label for="cityNameInput" class="form-label">Post office city name</label>
-      <input type="text" class="form-control" id="cityNameInput" name="cityName" placeholder="Moscow" required>
+    <div class="col-auto">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#postAddModal">
+        Add
+      </button>
     </div>
-    <button type="submit" class="btn btn-primary mb-3">Add</button>
-  </form>
-  <hr>
+  </div>
   {{#posts}}
     <div class="card mb-3">
       <div class="card-body">
@@ -66,14 +63,13 @@
   {{^posts}}
     <b>No post offices added...</b>
   {{/posts}}
-  <hr>
-  <br>
-  <h1>Add departure</h1>
+  <hr class="my-5">
+  <h2 class="mb-3">Add departure</h2>
   <form method="post" action="/departure/add">
     <div class="mb-3">
       <label for="postIdInput" class="form-label">Post office</label>
       <select class="form-select" id="postIdInput" name="postId" required>
-        <option selected>Select post office</option>
+        <option selected disabled>Select post office</option>
         {{#posts}}
           <option value="{{id}}" selected>{{name}}</option>
         {{/posts}}
@@ -90,5 +86,33 @@
     <button type="submit" class="btn btn-primary mb-3">Add</button>
   </form>
 </div>
+<div class="modal fade" id="postAddModal" tabindex="-1" aria-labelledby="postAddModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="postAddModalLabel">Post office add</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="post" action="/post/add">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="nameInput" class="form-label">Post office name</label>
+            <input type="text" class="form-control" id="nameInput" name="name" placeholder="Russian Post" required>
+          </div>
+          <div class="mb-3">
+            <label for="cityNameInput" class="form-label">Post office city name</label>
+            <input type="text" class="form-control" id="cityNameInput" name="cityName" placeholder="Moscow" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
+        integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
+        crossorigin="anonymous"></script>
 </body>
 </html>

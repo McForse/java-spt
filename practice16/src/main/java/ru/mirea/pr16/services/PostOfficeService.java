@@ -1,5 +1,6 @@
 package ru.mirea.pr16.services;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.mirea.pr16.exceptions.NotFoundException;
 import ru.mirea.pr16.models.PostOffice;
@@ -13,14 +14,10 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @Service
+@RequiredArgsConstructor
 public class PostOfficeService {
     private final PostOfficeRepository postOfficeRepository;
     private final DepartureRepository departureRepository;
-
-    public PostOfficeService(PostOfficeRepository postOfficeRepository, DepartureRepository departureRepository) {
-        this.postOfficeRepository = postOfficeRepository;
-        this.departureRepository = departureRepository;
-    }
 
     @Transactional
     public <T> T getAll(Function<List<PostOffice>, T> dtoConverter) {
@@ -43,7 +40,8 @@ public class PostOfficeService {
     @Transactional
     public void delete(long id) {
         Optional<PostOffice> post = getById(id);
-        if (!post.isPresent()) throw new NotFoundException(String.format("Post office with %s not found when deleting", id));
+        if (!post.isPresent())
+            throw new NotFoundException(String.format("Post office with %s not found when deleting", id));
         departureRepository.deleteAllByPost(post.get());
         postOfficeRepository.deleteById(id);
     }

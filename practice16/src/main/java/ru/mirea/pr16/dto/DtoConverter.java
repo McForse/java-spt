@@ -1,11 +1,9 @@
 package ru.mirea.pr16.dto;
 
-import org.hibernate.Hibernate;
 import org.springframework.stereotype.Component;
 import ru.mirea.pr16.models.Departure;
 import ru.mirea.pr16.models.PostOffice;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
