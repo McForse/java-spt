@@ -11,7 +11,7 @@ import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/home")
+@RequestMapping("home")
 public class HomeController {
     private final PostOfficeService postOfficeService;
     private final DtoConverter dtoConverter;

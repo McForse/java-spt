@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ru.mirea</groupId>
-	<artifactId>7</artifactId>
+	<artifactId>practice19</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>practice19</name>
 	<description>Practice 19 for java spt</description>
