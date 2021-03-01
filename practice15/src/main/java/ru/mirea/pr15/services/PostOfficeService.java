@@ -1,5 +1,6 @@
 package ru.mirea.pr15.services;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.mirea.pr15.exceptions.NotFoundException;
 import ru.mirea.pr15.models.PostOffice;
@@ -12,14 +13,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class PostOfficeService {
     private final PostOfficeRepository postOfficeRepository;
     private final DepartureRepository departureRepository;
-
-    public PostOfficeService(PostOfficeRepository postOfficeRepository, DepartureRepository departureRepository) {
-        this.postOfficeRepository = postOfficeRepository;
-        this.departureRepository = departureRepository;
-    }
 
     public List<PostOffice> getAll() {
         return postOfficeRepository.findAll();

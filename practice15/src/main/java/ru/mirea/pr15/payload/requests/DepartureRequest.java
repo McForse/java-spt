@@ -2,11 +2,13 @@ package ru.mirea.pr15.payload.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.ToString;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Getter
+@ToString
 @AllArgsConstructor
 public class DepartureRequest {
     @NotBlank
