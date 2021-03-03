@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.mirea.pr15.exceptions.NotFoundException;
 import ru.mirea.pr15.models.Departure;
 import ru.mirea.pr15.models.PostOffice;
-import ru.mirea.pr15.payload.requests.DepartureRequest;
+import ru.mirea.pr15.dto.DepartureRequest;
 import ru.mirea.pr15.repositories.DepartureRepository;
 
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package ru.mirea.pr15.payload.responses;
+package ru.mirea.pr15.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

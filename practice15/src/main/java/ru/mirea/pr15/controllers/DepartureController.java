@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
-import ru.mirea.pr15.payload.requests.DepartureRequest;
+import ru.mirea.pr15.dto.DepartureRequest;
 import ru.mirea.pr15.services.DepartureService;
 
 import javax.validation.Valid;

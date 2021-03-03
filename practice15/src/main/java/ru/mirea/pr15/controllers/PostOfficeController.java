@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
-import ru.mirea.pr15.payload.requests.PostOfficeRequest;
+import ru.mirea.pr15.dto.PostOfficeRequest;
 import ru.mirea.pr15.services.PostOfficeService;
 
 import javax.validation.Valid;

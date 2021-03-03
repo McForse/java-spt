@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.mirea.pr15.exceptions.NotFoundException;
 import ru.mirea.pr15.models.PostOffice;
-import ru.mirea.pr15.payload.requests.PostOfficeRequest;
+import ru.mirea.pr15.dto.PostOfficeRequest;
 import ru.mirea.pr15.repositories.DepartureRepository;
 import ru.mirea.pr15.repositories.PostOfficeRepository;
 

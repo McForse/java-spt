@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.mirea.pr15.payload.responses.PostOfficeResponse;
+import ru.mirea.pr15.dto.PostOfficeResponse;
 import ru.mirea.pr15.services.PostOfficeService;
 
 import java.util.Map;
