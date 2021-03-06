@@ -1,5 +1,6 @@
 package ru.mirea.pr14.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,15 +11,11 @@ import ru.mirea.pr14.services.DepartureService;
 import ru.mirea.pr14.services.PostOfficeService;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("post")
 public class PostOfficeController {
     private final PostOfficeService postOfficeService;
     private final DepartureService departureService;
-
-    public PostOfficeController(PostOfficeService postOfficeService, DepartureService departureService) {
-        this.postOfficeService = postOfficeService;
-        this.departureService = departureService;
-    }
 
     @PostMapping("add")
     public RedirectView add(@RequestParam String name, @RequestParam String cityName) {

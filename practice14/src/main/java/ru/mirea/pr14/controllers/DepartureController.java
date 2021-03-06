@@ -1,5 +1,6 @@
 package ru.mirea.pr14.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,13 +10,10 @@ import ru.mirea.pr14.models.Departure;
 import ru.mirea.pr14.services.DepartureService;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("departure")
 public class DepartureController {
     private final DepartureService departureService;
-
-    public DepartureController(DepartureService departureService) {
-        this.departureService = departureService;
-    }
 
     @PostMapping("add")
     public RedirectView add(@RequestParam long postId, @RequestParam String type, @RequestParam String date) {

@@ -1,21 +1,17 @@
 package ru.mirea.pr14.services;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.mirea.pr14.models.Departure;
 
 import java.util.*;
 
 @Service
-@Slf4j
+@RequiredArgsConstructor
 public class DepartureService {
     private final Map<Long, List<Departure>> database = new HashMap<>();
     private final PostOfficeService postOfficeService;
     private static long ID = 0;
-
-    public DepartureService(PostOfficeService postOfficeService) {
-        this.postOfficeService = postOfficeService;
-    }
 
     public Map<Long, List<Departure>> getAll() {
         return database;
