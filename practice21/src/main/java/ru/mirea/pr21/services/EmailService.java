@@ -1,31 +1,37 @@
 package ru.mirea.pr21.services;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
-@Transactional
-public class EmailServiceImpl implements EmailService {
-    public JavaMailSender emailSender;
-
-    private final String email;
+@Transactional(readOnly = true)
+public class EmailService {
+    @Value("${mail.to}")
+    private String email;
+    @Value("${spring.mail.username}")
+    private String username;
+    private JavaMailSender emailSender;
 
     @Autowired
-    public EmailServiceImpl(@Qualifier("email") String email) {
-        this.email = email;
+    public void setEmailSender(JavaMailSender emailSender) {
+        this.emailSender = emailSender;
     }
 
     @Async
-    public void sendEmail(Gameable item) {
+    public void send(String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(username);
         message.setTo(email);
-        message.setSubject("Item insert in DB");
-        message.setText("Item {id = " + item.getId() + ", name = " + item.getName() + "} inserted");
-        this.emailSender.send(message);
-        log.info("Email send");
+        message.setSubject(subject);
+        message.setText(text);
+        emailSender.send(message);
+        log.info("Email with subject '{}' and text '{}' successfully sent", subject, text);
     }
 }
