@@ -1,0 +1,27 @@
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+
+mail:
+  to: danilvda@gmail.com
+
+dir:
+  data: src/main/resources/data
+
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+  mail:
+    host: smtp.yandex.ru
+    username: ${SPRING_MAIL_USERNAME}
+    password: ${SPRING_MAIL_PASSWORD}
+    protocol: smtps
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
