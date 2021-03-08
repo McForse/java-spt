@@ -1,2 +1,0 @@
-id|name|city_name
-1|csdcds|csdcsdcs

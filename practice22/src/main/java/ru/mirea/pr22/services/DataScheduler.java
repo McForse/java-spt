@@ -21,7 +21,7 @@ public class DataScheduler {
     @Value("${dir.data}")
     private String path;
 
-    @Scheduled(cron = "0 0/1 * * * *")
+    @Scheduled(cron = "0 0/30 * * * *")
     public void saveData() throws IOException {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         Date date = new Date(System.currentTimeMillis());
